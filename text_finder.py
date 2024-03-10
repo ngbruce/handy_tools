@@ -2,13 +2,18 @@ import os
 import io
 
 # 用途：递归地遍历指定文件夹及其所有子文件夹，并检查每个可以打开为文本的文件是否包含该字符串
+# 在环境的记录文件里，例如 myPy310\conda-meta\history ，有当时建立环境的命令行记录
+# 有一些 .py文件和无扩展名文件，在开头会有一行： “#!F:\Installed_Soft\Anaconda3\envs\new3109\python.exe”
+# 考虑以后要加个程序选项，可以过滤掉这些
 
 # 设置要搜索的文件夹：
-path_to_search = 'D:\\Conda_offline\\new3109cc' # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
+path_to_search = 'C:\\Users\\Bruce\\anaconda3'
+# 'D:\\Conda_offline\\new3109cc' # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
 # 要搜索的字符串（大小写敏感）
-search_string = 'Qwen'  # 'F:\\Installed_Soft\\Anaconda3'
+search_string = 'F:\\Installed_Soft\\Anaconda3'  # 'F:\\Installed_Soft\\Anaconda3'  'Qwen'
 # 忽略特定扩展名的文件：
-ignore_files = ('.pyc', '.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.bin', '.exe', '.dll', '.so')
+# .pyc是编译的文件，应该先运行 del_pycache.py 清除      '.pyc',
+ignore_files = ( '.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.bin', '.exe', '.dll', '.so')
 
 # 定义一个函数来检查文件是否包含特定字符串
 def check_file_for_string(file_path, search_string):
