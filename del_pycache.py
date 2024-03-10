@@ -1,0 +1,19 @@
+import os
+import shutil
+
+# 未测试
+# 替换为你的conda环境路径
+conda_env_path = 'D:\\Conda_offline\\new3109cc'  # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
+
+cnt=0
+# 遍历conda环境目录
+for root, dirs, files in os.walk(conda_env_path):
+    # 检查当前目录是否包含__pycache__
+    if '__pycache__' in dirs:
+        # 构建__pycache__的完整路径
+        pycache_dir = os.path.join(root, '__pycache__')
+        # 递归删除__pycache__目录
+        shutil.rmtree(pycache_dir)
+        cnt += 1
+        print("delcnt=", cnt)
+
