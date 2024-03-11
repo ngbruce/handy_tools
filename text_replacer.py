@@ -5,9 +5,9 @@ import os
 # 检查二进制文件(扩展名在列表的)，搜索是否包含特定路径，如果包含，则用空格覆盖路径，只留下"python.exe"
 
 # 要搜索的路径
-path_to_search = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109glm3'
+path_to_search = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\Scripts'
 # 要搜索的字符串
-search_string = 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109glm\\python.exe'
+search_string = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe'
 # "D:\\Conda_offline\\new3109cc\\python.exe"
 # "C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc\\python.exe"
 # "F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe"
@@ -15,7 +15,7 @@ search_string = 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109glm\\python.exe'
 # 文本搜索，要排除的扩展名，如要排除无扩展名文件，列表中加空字符串 ''
 file_type_shebang_exclude = ['.exe', '.dll', '.bin', '.png', '.jpg', '.jpeg', '.gif', '.bmp']
 # 要替换的新路径
-txt_replace_with = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109glm3\\python.exe'
+txt_replace_with = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\python.exe'
 # "F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe"
 # "D:\\Conda_offline\\new3109cc\\python.exe"
 
@@ -96,5 +96,5 @@ def traverse_and_replace(path_to_search, search_string, file_type_shebang_exclud
 cnt_text = 0
 cnt_bin = 0
 traverse_and_replace(path_to_search, search_string, file_type_shebang_exclude, txt_replace_with, file_type_bin)
-print("总共替换数量：", cnt_text + cnt_bin, " 其中文本文件替换数量：", cnt_text, " 二进制文件替换数量：", cnt_bin)
+print("总替换数量：", cnt_text + cnt_bin, "  / 文本文件：", cnt_text, "  / 二进制文件：", cnt_bin)
 print("替换完成！")
