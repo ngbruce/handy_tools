@@ -5,9 +5,9 @@ import os
 # 检查二进制文件(扩展名在列表的)，搜索是否包含特定路径，如果包含，则用空格覆盖路径，只留下"python.exe"
 
 # 要搜索的路径
-path_to_search = 'D:\\Conda_offline\\test\\sub folder'
+path_to_search = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109glm3'
 # 要搜索的字符串
-search_string = "C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc\\python.exe"
+search_string = 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109glm\\python.exe'
 # "D:\\Conda_offline\\new3109cc\\python.exe"
 # "C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc\\python.exe"
 # "F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe"
@@ -15,11 +15,11 @@ search_string = "C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc\\python.exe"
 # 文本搜索，要排除的扩展名，如要排除无扩展名文件，列表中加空字符串 ''
 file_type_shebang_exclude = ['.exe', '.dll', '.bin', '.png', '.jpg', '.jpeg', '.gif', '.bmp']
 # 要替换的新路径
-txt_replace_with = "D:\\Conda_offline\\new3109cc\\python.exe"
+txt_replace_with = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109glm3\\python.exe'
 # "F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe"
 # "D:\\Conda_offline\\new3109cc\\python.exe"
 
-# 要搜索的二进制文件  这些文件是哦那个个覆盖python路径，仅保留 "python.exe"
+# 要搜索的二进制文件  用空格覆盖python路径，仅保留 "python.exe"
 file_type_bin = ['.exe', '.dll', '.bin']
 search_string_bytes = search_string.encode('utf-8')
 python_exe_bytes = b"python.exe"
@@ -27,6 +27,7 @@ python_exe_bytes = b"python.exe"
 
 # 遍历指定路径下的所有文件
 def traverse_and_replace(path_to_search, search_string, file_type_shebang_exclude, txt_replace_with, file_type_bin):
+    global cnt_text, cnt_bin
     for root, dirs, files in os.walk(path_to_search):
         for filename in files:
             file_path = os.path.join(root, filename)
@@ -53,6 +54,7 @@ def traverse_and_replace(path_to_search, search_string, file_type_shebang_exclud
                             # 写入整个新内容（新的第一行加上剩余内容）
                             f.write(new_content)
                             print(f"(text) Replaced in {file_path}")
+                            cnt_text += 1
                 except IOError as e:
                     print(f"Error reading or writing {file_path}: {e}")
 
@@ -78,16 +80,21 @@ def traverse_and_replace(path_to_search, search_string, file_type_shebang_exclud
                                     f.seek(0)
                                     f.write(new_content)
                                     # 截断文件以去除多余的内容
-                                    print("warning！ truncate file, new len = ", len(new_content), " old len = ", len(content))
+                                    print("警告！截断文件, new len = ", len(new_content), " old len = ", len(content))
                                     f.truncate()
                                 else:
                                     # 直接从文件开头位置写入替换内容
                                     f.seek(0)
                                     f.write(new_content)
                                 print(f"(bin) Replaced in {file_path}")
+                                cnt_bin += 1
                 except IOError as e:
                     print(f"Error reading or writing binary file {file_path}: {e}")
 
 
 # 开始执行程序
+cnt_text = 0
+cnt_bin = 0
 traverse_and_replace(path_to_search, search_string, file_type_shebang_exclude, txt_replace_with, file_type_bin)
+print("总共替换数量：", cnt_text + cnt_bin, " 其中文本文件替换数量：", cnt_text, " 二进制文件替换数量：", cnt_bin)
+print("替换完成！")

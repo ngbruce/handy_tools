@@ -1,9 +1,9 @@
 import os
 import shutil
 
-# 未测试
-# 替换为你的conda环境路径
-conda_env_path = 'D:\\Conda_offline\\new3109cc'  # new3109  new3109glm new3109glm3
+
+# 要搜索的conda环境路径
+conda_env_path = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109glm3'  # new3109  new3109glm new3109glm3
 # 'D:\\Conda_offline\\new3109finetune'  # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
 # "D:\\My_Doc\\PythonProjs\\chatRecorder_Env"
 
@@ -17,5 +17,5 @@ for root, dirs, files in os.walk(conda_env_path):
         # 递归删除__pycache__目录
         shutil.rmtree(pycache_dir)
         cnt += 1
-        print("delcnt=", cnt)
+        print("删除文件夹数量=", cnt)
 
