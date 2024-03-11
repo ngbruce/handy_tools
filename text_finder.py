@@ -9,6 +9,7 @@ import io
 # 设置要搜索的文件夹：
 path_to_search = 'D:\\Conda_offline\\new3109cc'
 # 'D:\\Conda_offline\\new3109cc' # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
+
 # 要搜索的字符串（大小写敏感）
 search_string = 'F:\\Installed_Soft'
 # zx7: 'F:\\Installed_Soft\\Anaconda3'  'Qwen'
@@ -17,7 +18,9 @@ search_string = 'F:\\Installed_Soft'
 # 忽略特定扩展名的文件：
 # .pyc是编译的文件，应该先运行 del_pycache.py 清除，exe文件里面也可能带有文本存放的路径      '.pyc', '.exe', '.dll',
 # ignore_files = ( '.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.bin', '.so')
-ignore_files = ( '.png', '.jpg', '.jpeg', '.gif', '.bmp')
+ignore_files = ('.png', '.jpg', '.jpeg', '.gif', '.bmp')
+
+
 # 定义一个函数来检查文件是否包含特定字符串
 def check_file_for_string(file_path, search_string):
     try:

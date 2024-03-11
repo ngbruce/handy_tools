@@ -1,16 +1,24 @@
 import os
-# 目前初步看ok，二进制部分不知会否误删内容
-# 给定的变量
-path_to_search = 'D:\\Conda_offline\\test\\sub folder'
+#用于复制conda环境后更改python.exe的路径
+
+# 要搜索的路径
+path_to_search = 'D:\\Conda_offline\\new3109cc'
+# 要搜索的字符串
 search_string = "C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc\\python.exe"
 # "D:\\Conda_offline\\new3109cc\\python.exe"
 # "C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc\\python.exe"
 # "F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe"
+
+# 要文本搜索的扩展名
 file_type_shebang = ['.py', '.txt']
+# 文本搜索是否包含无扩展名文件
+include_no_ext_files = True
+# 要替换的文本
 txt_replace_with = "D:\\Conda_offline\\new3109cc\\python.exe"
 # "F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe"
 # "D:\\Conda_offline\\new3109cc\\python.exe"
-include_no_ext_files = True  # 是否包含无扩展名文件
+
+# 要搜索的二进制文件  这些文件是删除python路径，仅保留 "python.exe"
 file_type_bin = ['.exe', '.dll', '.bin']
 search_string_bytes = search_string.encode('utf-8')
 python_exe_bytes = b"python.exe"
@@ -70,14 +78,24 @@ def traverse_and_replace(path_to_search, search_string, file_type_shebang, txt_r
                                 # 创建替换后的内容，用空格替换掉部分字符串
                                 # 注意这里使用 b' ' * replace_length 来创建相应长度的空格字节串
                                 new_content = content[:search_pos] + b' ' * replace_length + content[python_exe_pos:]
-                                # 将文件指针移回文件的开始
-                                f.seek(0)
-                                # 写入替换后的内容
-                                f.write(new_content)
-                                # 截断文件以去除多余的内容（如果有的话）
-                                f.truncate()
+
+                                # 检查新内容是否比原始内容短
+                                # print("len(new_content):", len(new_content))
+                                # print("len(content):", len(content))
+                                if len(new_content) < len(content):  # 文件字节数，应该相等的
+                                    # 写入替换后的内容
+                                    f.seek(0)
+                                    f.write(new_content)
+                                    # 截断文件以去除多余的内容
+                                    print("warning！ truncate file, new len = ", len(new_content), " old len = ", len(content))
+                                    f.truncate()
+                                else:
+                                    # 直接从文件开头位置写入替换内容
+                                    f.seek(0)
+                                    f.write(new_content)
+
                                 print(f"(bin) Replaced in {file_path}")
-                            # else:
+                                # else:
                             #     print(f"Did not find {python_exe_bytes} after {search_string_bytes} in {file_path}")
                         # else:
                         #     print(f"Did not find {search_string_bytes} in {file_path}")
