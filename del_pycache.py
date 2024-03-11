@@ -3,7 +3,7 @@ import shutil
 
 # 未测试
 # 替换为你的conda环境路径
-conda_env_path = 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109glm3'  # new3109  new3109glm new3109glm3
+conda_env_path = 'D:\\Conda_offline\\new3109cc'  # new3109  new3109glm new3109glm3
 # 'D:\\Conda_offline\\new3109finetune'  # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
 # "D:\\My_Doc\\PythonProjs\\chatRecorder_Env"
 
