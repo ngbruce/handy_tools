@@ -7,11 +7,11 @@ import io
 # 有一些exe文件则在末尾处有嵌入此字符串
 
 # 设置要搜索的文件夹：
-path_to_search = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen'
+path_to_search = 'D:\\MY_DOCUMENTS\\Python_Projs\\My_Apps\\handy_tools'
 # 'D:\\Conda_offline\\new3109cc' # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
 
 # 要搜索的字符串（大小写敏感）
-search_string = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe'
+search_string = 'Win_tools'
 # zx7: 'F:\\Installed_Soft\\Anaconda3'  'Qwen'
 # x99: 'D:\\Conda_offline\\new3109cc' # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
 
