@@ -35,72 +35,82 @@ while true; do
     case $gitsel in  
         1)  
             echo "正在执行 add 命令..."  
+            echo "------------------------------"
             git add .  
             echo "add 命令执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         2)  
+            echo "正在执行 commit 命令..." 
+            echo "------------------------------"
             read -p "请输入commit注释: " commit_message  
-            echo "正在执行 commit 命令..."  
             git commit -m "$commit_message"  
             echo "commit 命令执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         3)  
             echo "正在执行 push 命令..."  
+            echo "------------------------------"
             git push origin master  
             echo "push 命令执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         4)  
             echo "正在执行 fetch 命令..."  
+            echo "------------------------------"
             git fetch --all  
             echo "fetch 命令执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         5)  
             echo "正在执行 pull 命令..."  
+            echo "------------------------------"
             git pull origin master  
             echo "pull 命令执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         6)  
             echo "正在执行 status 命令..."  
+            echo "------------------------------"
             git status  
             echo "status 命令执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         7)  
             echo "正在执行 log 命令..."  
+            echo "------------------------------"
             git log  
             echo "log 命令执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         8)  
             echo "正在执行设置代理..."  
+            echo "------------------------------"
             git config --global http.proxy http://127.0.0.1:20171
 	    git config --global https.proxy http://127.0.0.1:20171
 	    git config --global socks.proxy socks5://127.0.0.1:20170
 	    echo "---------显示全局设置------------"
 	    git config --global --list
-	    echo ------------------------------
+	    echo "------------------------------"
             echo "设置代理执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         9)  
             # TODO: 实现取消代理的逻辑  
             echo "正在执行取消代理..."  
+            echo "------------------------------"
             git config --global --unset http.proxy
 	    git config --global --unset https.proxy
 	    git config --global --unset socks.proxy
 	    echo "---------显示全局设置------------"
 	    git config --global --list
-	    echo ------------------------------
+	    echo "------------------------------"
             echo "取消代理执行完成，按任意键继续..."  
             read -n 1 -s  
             ;;  
         s)  
             echo "正在执行查看全局设置..."  
+            echo "------------------------------"
             git config --global --list
             echo "查看全局设置执行完成，按任意键继续..."  
             read -n 1 -s  
