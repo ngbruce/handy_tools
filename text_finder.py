@@ -7,19 +7,20 @@ import io
 # 有一些exe文件则在末尾处有嵌入此字符串
 
 # 设置要搜索的文件夹：
-path_to_search = "E:\\Driver_install\\551.86-desktop-win10-win11-64bit-international-nsd-dch-whql\\Display.Driver"  #
+# Linux下要放完整路径
+path_to_search = "/home/bruce/My_Doc/llama.cpp_test"#
 # 'D:\\MY_DOCUMENTS\\Python_Projs\\My_Apps\\handy_tools'
 # 'D:\\Conda_offline\\new3109cc' # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
 
 # 要搜索的字符串（大小写敏感）
-search_string = 'Tesla'
+search_string = 'graph has different number of nodes'
 # zx7: 'F:\\Installed_Soft\\Anaconda3'  'Qwen'
 # x99: 'D:\\Conda_offline\\new3109cc' # 'C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc'
 
 # 忽略特定扩展名的文件：
 # .pyc是编译的文件，应该先运行 del_pycache.py 清除，exe文件里面也可能带有文本存放的路径      '.pyc', '.exe', '.dll',
 # 搜索conda路径要包括无扩展名文件，若要忽略无扩展名文件，加入 ''
-ignore_files = ( '.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.bin', '.so', '.exe', '.dll', '.sys', '.mof', '')
+ignore_files = ( '.png', '.jpg', '.jpeg', '.gif', '.bmp', '.tiff', '.bin', '.so', '.exe', '.dll', '.sys', '.mof')#, ''
 # ignore_files = ('.png', '.jpg', '.jpeg', '.gif', '.bmp')
 
 # 选项，大小写是否敏感
