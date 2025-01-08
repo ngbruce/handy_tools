@@ -5,9 +5,13 @@ import os
 # 检查二进制文件(扩展名在列表的)，搜索是否包含特定路径，如果包含，则用空格覆盖路径，只留下"python.exe"
 
 # 要搜索的路径
-path_to_search = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\Scripts'
+path_to_search = 'D:\\Open_Projects_Sync\\ComfyUI2024_Pack\\python'#'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\Scripts'
 # 要搜索的字符串
-search_string = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe'
+search_string = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\python.exe'
+#'C:\\aki\\AAPACKING\\ComfyUI-aki-v1\\python\\python.exe'
+#'K:\\ComfyUI2024\\python\\python.exe'
+#'D:\\OpenSource_Projects\\ComfyUI2024\\python\\python.exe'
+#'F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe'
 # "D:\\Conda_offline\\new3109cc\\python.exe"
 # "C:\\Users\\Bruce\\anaconda3\\envs\\new3109cc\\python.exe"
 # "F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe"
@@ -15,7 +19,8 @@ search_string = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe'
 # 文本搜索，要排除的扩展名，如要排除无扩展名文件，列表中加空字符串 ''
 file_type_shebang_exclude = ['.exe', '.dll', '.bin', '.png', '.jpg', '.jpeg', '.gif', '.bmp']
 # 要替换的新路径
-txt_replace_with = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\python.exe'
+txt_replace_with = 'python.exe'
+#'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\python.exe'
 # "F:\\Installed_Soft\\Anaconda3\\envs\\new3109cc\\python.exe"
 # "D:\\Conda_offline\\new3109cc\\python.exe"
 
