@@ -1,11 +1,12 @@
 import os
 
 # 用途：用于复制conda环境后更改python.exe的路径
-# 检查文本文件(排除的除外)，搜索第一行是否包含特定路径，如果包含，则替换为新的路径
+# 检查文本文件(排除的除外 )，仅检查第一行！是否包含特定路径，如果包含，则替换为新的路径
 # 检查二进制文件(扩展名在列表的)，搜索是否包含特定路径，如果包含，则用空格覆盖路径，只留下"python.exe"
 
 # 要搜索的路径
-path_to_search = 'D:\\Open_Projects_Sync\\ComfyUI2024_Pack\\python'#'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\Scripts'
+path_to_search = 'D:\\Open_Projects_Sync\\ComfyUI2024_Pack\\python'
+#'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\Scripts'
 # 要搜索的字符串
 search_string = 'F:\\Installed_Soft\\Anaconda3\\envs\\new3109qwen\\python.exe'
 #'C:\\aki\\AAPACKING\\ComfyUI-aki-v1\\python\\python.exe'
