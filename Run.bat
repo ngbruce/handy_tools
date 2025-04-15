@@ -14,6 +14,7 @@ echo - 3 - 激活conda环境，手动运行(exit退出)
 echo - 4 - VPN 设置
 echo - 5 - 打开文件夹.
 echo - 6 - Git
+echo - 7 - 使用命令行
 echo ---------------------------------------
 set /p "envsel=请选择Python运行环境: "
 if %envsel%==1 (
@@ -38,6 +39,12 @@ rem	exit
 	goto start_env
 ) else if %envsel%==6 (
 	call bat\set_git.bat
+	goto start_env
+) else if %envsel%==7 (
+	title 命令行 输入exit 退出
+	%windir%\System32\cmd.exe
+	echo 已退出命令行
+	pause
 	goto start_env
 ) else (
 	cls
@@ -97,3 +104,4 @@ rem 使用exit 可以退出，即使快捷方式有参数 "K"
 rem exit
 rem exit /b
 endlocal
+:start_cmd
