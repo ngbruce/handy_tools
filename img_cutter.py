@@ -4,7 +4,7 @@ import os
 # 用途：用于批量裁剪图片
 
 # 1. 设置工作文件夹路径和输出文件夹路径
-work_dir = "D:/MY_DOCUMENTS/Python_Projs/My_Apps/handy_tools/images_to_cut"  # 修改为实际工作目录
+work_dir = "./images_to_cut"  # 修改为实际工作目录
 output_dir = os.path.join(work_dir, "output")
 
 # 2. 设置支持的图片文件扩展名列表
