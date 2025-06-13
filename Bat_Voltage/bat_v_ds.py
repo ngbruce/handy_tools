@@ -3,8 +3,9 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 
 # 全局变量定义
-DATA_FILE_PATH = "bat_rec_1.txt"  # 数据文件路径
+DATA_FILE_PATH = "./batch_2/bat_rec_5.txt"  # 数据文件路径
 SMOOTHING_WINDOW = 5  # 平滑化窗口大小，可调整
+NUM_Intervals = 20  # 划分区间数量
 
 # 设置中文字体，避免中文显示问题
 plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'WenQuanYi Zen Hei']  # 常用中文字体
@@ -28,14 +29,14 @@ def read_file(file_path):
     return data
 
 
-def split_into_intervals(data, num_intervals=10):
-    """将电压数据分成指定数量的区间，按数据量10%为间隔"""
-    interval_size = len(data) // num_intervals
-    interval_indices = [i * interval_size for i in range(num_intervals + 1)]
-    # 确保最后一个索引不超过数据长度
-    interval_indices[-1] = min(interval_indices[-1], len(data) - 1)
-    intervals = [data[i] for i in interval_indices]
-    return intervals[::-1]  # 反转列表，让数值最小的区间先出现
+def split_into_intervals(data, num_intervals=NUM_Intervals):
+    """将电压数据分成指定数量NUM_Intervals 的区间"""
+    # 使用linspace生成精确的等分索引（包含首尾）
+    interval_indices = np.linspace(0, len(data)-1, num=num_intervals+1, dtype=int)
+    # 返回前的反转操作
+    # return [data[i] for i in interval_indices]
+    temp = [data[i] for i in interval_indices]
+    return temp[::-1]  # 反转列表，让数值最小的区间先出现
 
 
 def smooth_data(data, window_size):
@@ -67,7 +68,7 @@ def main():
 
     # 3. 分割电压区间 (现在基于平滑化后的数据)
     intervals = split_into_intervals(smoothed_data)
-    print("\n电压区间(10等分):")
+    print("\n电压区间 (" + str(NUM_Intervals) + " 等分):")
     for i, v in enumerate(intervals):
         print(f"区间{i + 1}: {v:.2f} mV")
 
@@ -76,9 +77,9 @@ def main():
     print("\nJavaScript格式区间数据:")
     print("[")
     for i, v in enumerate(intervals):
-        x_val = i * 10  # 按10递增
-        y_val = v / 1000  # 转换为伏特
-        print(f"    [{(x_val):.1f}, {y_val:.2f}],")  # 调整x_val计算方式，使其从0开始递增
+        x_val = i * (100/NUM_Intervals)  # 修正变量名NUM_Intervals -> num_intervals
+        y_val = v / 1000
+        print(f"    [{(x_val):.1f}, {y_val:.2f}],")
     print("]")
 
     # 5. 绘制曲线图
@@ -86,10 +87,10 @@ def main():
     line_original, = ax.plot(voltage_data, label='原始数据', color='blue', alpha=0.5)
     line_smoothed, = ax.plot(smoothed_data, label='平滑数据', color='red', linewidth=2)
 
-    # 设置X轴刻度为数据量的10%间隔
-    num_intervals = 10
+    # 设置X轴刻度为数据量的 NUM_Intervals 间隔
+    num_intervals = NUM_Intervals
     interval_size = len(voltage_data) // num_intervals
-    xticks = [i * interval_size for i in range(num_intervals + 1)]
+    xticks = [i * interval_size for i in range(num_intervals + 1+1+2)]
     ax.set_xticks(xticks)
 
     # 添加标注
