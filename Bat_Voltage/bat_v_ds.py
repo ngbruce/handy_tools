@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 
 # 全局变量定义
-DATA_FILE_PATH = "./batch_2/bat_rec_5.txt"  # 数据文件路径
+DATA_FILE_PATH = "./batch_earlier/bat_rec_4.txt"  # 数据文件路径
 SMOOTHING_WINDOW = 5  # 平滑化窗口大小，可调整
 NUM_Intervals = 20  # 划分区间数量
 
